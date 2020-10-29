@@ -12,8 +12,10 @@ Using Christofides Algorithm, we always get a path whose cost is within 1.5 time
 
 ### How to start the application
 
-- pip install requirements.txt
-- run app.py
+1. `git clone https://github.com/akash13s/Warehouse-Path-Optimisation.git`
+2. `cd WarehousePathOptimisation`
+3. `pip install requirements.txt`
+3. `run app.py`
 
 
 ### Postman collection list
