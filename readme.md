@@ -14,7 +14,7 @@ Using Christofides Algorithm, we always get a path whose cost is within 1.5 time
 
 1. `git clone https://github.com/akash13s/Warehouse-Path-Optimisation.git`
 2. `cd Warehouse-Path-Optimisation`
-3. `pip install requirements.txt`
+3. `pip install -r requirements.txt`
 3. `run app.py`
 
 
