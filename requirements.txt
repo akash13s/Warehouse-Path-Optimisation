@@ -39,7 +39,7 @@ pyzmq==19.0.2
 six==1.13.0
 toml==0.10.0
 tornado==6.0.4
-traitlets==5.0.4
+traitlets==4.3.3
 typed-ast==1.4.1
 wcwidth==0.2.5
 Werkzeug==1.0.1
