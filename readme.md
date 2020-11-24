@@ -5,9 +5,9 @@ This application calculates the path a bot should take in order to minimise the 
 
 ### Approach to solve the problem 
 
-The DP-bitmasking approach takes exponential time complexity, that is, it performs poorly if number of items to be picked is greater than 17.  
+The DP-bitmasking approach takes exponential time complexity O(N^2 * 2^N), that is, it performs poorly if number of items to be picked is greater than 17.  
 
-Using Christofides Algorithm, we always get a path whose cost is within 1.5 times the cost of the most suitable path, and the number of items that can now be picked is approximately 400. 
+Using Christofides Algorithm, we always get a path whose cost is within 1.5 times the cost of the most suitable path, and the number of items that can now be picked is approximately 400. The time complexity of this algorithm is O(N^3)
 
 
 ### How to start the application
@@ -15,7 +15,7 @@ Using Christofides Algorithm, we always get a path whose cost is within 1.5 time
 1. `git clone https://github.com/akash13s/Warehouse-Path-Optimisation.git`
 2. `cd Warehouse-Path-Optimisation`
 3. `pip install -r requirements.txt`
-3. `run app.py`
+3. `Run app.py on your IDE`
 
 
 ### Postman collection list
