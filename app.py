@@ -4,8 +4,11 @@ import json
 from backend.models import WarehouseCell
 import networkx as nx
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app)
 
 WAREHOUSE = {
     'simple-warehouse': get_simple_warehouse_layout(), 
