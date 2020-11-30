@@ -1,0 +1,19 @@
+.navigable-cell {
+    fill: #ffffff;
+}
+
+.shelving-cell {
+    fill: #676767;
+}
+
+.source-cell {
+    fill: #F56C4E;
+}
+
+.path-cell {
+    fill: #ffee00;
+}
+
+.item-to-pick-up-cell {
+    fill: #2C93E8;
+}
