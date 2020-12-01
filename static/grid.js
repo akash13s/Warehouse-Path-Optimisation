@@ -20,8 +20,6 @@ var inputX, inputY;
 
 function getFun(e) {
     e.preventDefault();
-    // console.log(e.target);
-    // console.log(input.value);
     getRequest(input.value);
     document.getElementById('renderBtn').disabled = true;
     document.getElementById('finalBtn').hidden = false;
@@ -34,6 +32,15 @@ function getPath(e) {
     document.getElementById('finalBtn').disabled = true;
 }
 
+var HEIGHT = 35,
+WIDTH = 35,
+PADDING = 3;
+
+var BLOCKED_CELL_COLOR = "lime",
+  VALID_CELL_COLOR = "#101010",
+  SOURCE_COLOR = "red",
+  INTERMEDIATE_CELL_COLOR = "#CD853F",
+  ITEM_COLOR = "blue";
 
 function gridData(dimensionX, dimensionY, mySet) {
     // console.log(dimensionX, dimensionY);
@@ -43,8 +50,8 @@ function gridData(dimensionX, dimensionY, mySet) {
     var data = new Array();
     var xpos = 1;
     var ypos = 1;
-    var width = 50;
-    var height = 50;
+    var width = WIDTH;
+    var height = HEIGHT;
     // if (input.value == 'large-warehouse') {
     //     width = 40;
     //     height = 40;
@@ -99,8 +106,8 @@ function printGrid(dimensionX, dimensionY, mySet) {
     // console.log(gData);
     var grid = d3.select('#grid')
         .append("svg")
-        .attr("width", dimensionY * 50 + 100)
-        .attr("height", dimensionX * 50 + 100)
+        .attr("width", dimensionY * WIDTH + 50 + "px")
+        .attr("height", dimensionX * HEIGHT + 50 + "px")
 
     var row = grid.selectAll(".row")
         .data(gData)
@@ -113,10 +120,11 @@ function printGrid(dimensionX, dimensionY, mySet) {
         .enter()
         .append("rect")
         .attr("class", "square")
+        .attr("rx", 6)
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return d.y; })
-        .attr("width", function(d) { return d.width; })
-        .attr("height", function(d) { return d.height; })
+        .attr("width", function(d) { return d.width - PADDING; })
+        .attr("height", function(d) { return d.height - PADDING; })
         .attr("class", function(d) {
             if (d.valid == 0)
                 return "shelving-cell";
@@ -128,7 +136,7 @@ function printGrid(dimensionX, dimensionY, mySet) {
             if (d.valid == true) {
                 d.click++;
                 if ((d.click) % 3 == 0) {
-                    d3.select(this).style("fill", "#fff");
+                    d3.select(this).style("fill", VALID_CELL_COLOR);
                     if (inputSet.has(`${d.xCor}_${d.yCor}`)) {
                         inputSet.delete(`${d.xCor}_${d.yCor}`);
                     }
@@ -137,7 +145,7 @@ function printGrid(dimensionX, dimensionY, mySet) {
                     }
                 }
                 if ((d.click) % 3 == 1) {
-                    d3.select(this).style("fill", "#2C93E8");
+                    d3.select(this).style("fill", ITEM_COLOR);
                     inputSet.add(`${d.xCor}_${d.yCor}`);
                     if (inputSetSource.has(`${d.xCor}_${d.yCor}`)) {
                         inputSetSource.delete(`${d.xCor}_${d.yCor}`);
@@ -145,10 +153,10 @@ function printGrid(dimensionX, dimensionY, mySet) {
                 }
                 if ((d.click) % 3 == 2) {
                     if (inputSetSource.size == 0) {
-                        d3.select(this).style("fill", "#F56C4E");
+                        d3.select(this).style("fill", SOURCE_COLOR);
                         inputSetSource.add(`${d.xCor}_${d.yCor}`);
                     } else {
-                        d3.select(this).style("fill", "#fff");
+                        d3.select(this).style("fill", VALID_CELL_COLOR);
                     }
                     if (inputSet.has(`${d.xCor}_${d.yCor}`)) {
                         inputSet.delete(`${d.xCor}_${d.yCor}`);
@@ -167,8 +175,8 @@ function gridDataFinal(inputX, inputY, mySet, myPath, set1, set2) {
     var data1 = new Array();
     var xpos1 = 1;
     var ypos1 = 1;
-    var width1 = 50;
-    var height1 = 50;
+    var width1 = WIDTH;
+    var height1 = HEIGHT;
     // if (input.value == 'large-warehouse') {
     //     console.log(input.value);
     //     width1 = 40;
@@ -249,8 +257,8 @@ function printGridFinal(myPath, set1, set2) {
     // console.log(inputX, inputY);
     var grid1 = d3.select('#finalGrid')
         .append("svg")
-        .attr("width", inputY * 50 + 100)
-        .attr("height", inputX * 50 + 100)
+        .attr("width", inputY * WIDTH + 50 + "px")
+        .attr("height", inputX * HEIGHT + 50 + "px")
 
     var row1 = grid1.selectAll(".row")
         .data(gDataFinal)
@@ -263,10 +271,11 @@ function printGridFinal(myPath, set1, set2) {
         .enter()
         .append("rect")
         .attr("class", "square")
+        .attr("rx", 6)
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return d.y; })
-        .attr("width", function(d) { return d.width; })
-        .attr("height", function(d) { return d.height; })
+        .attr("width", function(d) { return d.width - PADDING; })
+        .attr("height", function(d) { return d.height - PADDING; })
         .attr("class", function(d) {
             if (d.cellType == 0)
                 return "source-cell";
@@ -286,27 +295,7 @@ function getRequest(x) {
 
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var reqUrl = 'https://warehouse-path-optimisation.herokuapp.com/warehouse/' + x;
-    // var xhr = new XMLHttpRequest();
-    // // console.log(x);
-    // console.log(reqUrl);
-    // // xhr.open('GET', 'sample.txt', true);
-    // xhr.open('GET', reqUrl, true);
-
-    // xhr.onreadystatechange = function() {
-    //     if (this.readyState == 4 && this.status == 200) {
-    //         var response = JSON.parse(this.responseText);
-    //         console.log(response);
-    //         // console.log(typeof(response.valid_nodes));
-    // for (var i = 0; i < response.valid_nodes.length; i++) {
-    //     var currX = response.valid_nodes[i][0];
-    //     var currY = response.valid_nodes[i][1];
-    //     mySet.add(`${currX}_${currY}`);
-    // };
-    // printGrid(response.dimensions[0], response.dimensions[1], mySet);
-    //     }
-    // }
-    // xhr.send();
-    //fetch(reqUrl, { mode: 'cors' })
+   
     fetch(reqUrl)
         .then(response => response.json())
         .then(data => {
@@ -344,22 +333,7 @@ function makePostRequest(set1, set2) {
     console.log(input.value);
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
     var postUrl = 'https://warehouse-path-optimisation.herokuapp.com/' + input.value + '/find-pick-path';
-    // var xhrNew = new XMLHttpRequest();
-    // xhrNew.open('POST', proxyurl + postUrl, true);
-    // // xhrNew.setRequestHeader();
-    // xhrNew.onreadystatechange = function() {
-    //     if (xhrNew.readyState == 4 && this.state == 200) {
-    //         console.log(this.responseText);
-    //         var response2 = JSON.parse(this.responseText);
-    // for (var i = 0; i < response2.path; i++) {
-    //     var currX = response2.path[i][0];
-    //     var currY = response2.path[i][1];
-    //     myPath.add(`${currX}_${currY}`);
-    // };
-    // printGridFinal(myPath);
-    // }
-    // }
-    // xhrNew.send(postData);
+  
     fetch(postUrl, {
             method: 'post',
             headers: {
@@ -376,7 +350,7 @@ function makePostRequest(set1, set2) {
                 var currY = data.path[i][1];
                 myPath.add(`${currX}_${currY}`);
             };
-            // mySource.add(`${data.path[0][0]}_${data.path[0][1]}`);
+            
             printGridFinal(myPath, set1, set2);
         })
         .catch(e => {

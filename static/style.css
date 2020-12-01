@@ -1,24 +1,27 @@
+/* var BLOCKED_CELL_COLOR = "lime",
+  VALID_CELL_COLOR = "#101010",
+  SOURCE_COLOR = "red",
+  INTERMEDIATE_CELL_COLOR = "#CD853F",
+  ITEM_COLOR = "blue"; */
+
 .navigable-cell {
-    fill: #ffffff;
+    fill: #101010;
 }
 
-
-/* shelve cell */
-
 .shelving-cell {
-    fill: #676767;
+    fill: lime;
 }
 
 .source-cell {
-    fill: #F56C4E;
+    fill: red;
 }
 
 .path-cell {
-    fill: #ffee00;
+    fill: #CD853F;
 }
 
 .item-to-pick-up-cell {
-    fill: #2C93E8;
+    fill: blue;
 }
 
 #head {
@@ -27,7 +30,7 @@
 }
 
 #top-bar {
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+    background-image: linear-gradient(to right, lime, rgb(21, 255, 0));
     border-style: groove;
     border-width: 5px;
     border-radius: 20px;
@@ -37,7 +40,7 @@
 }
 
 .btn {
-    background-color: #eb645b;
+    background-color: lime;
     border: slategray;
     border-radius: 10px;
     color: rgba(15, 1, 1, 0.973);
@@ -59,9 +62,21 @@
 }
 
 #selectionForm {
-    color: rgba(165, 46, 10, 0.849);
+    color: lime;
     border-style: double;
     border-radius: 15px;
     margin-bottom: 20px;
     font-family: sans-serif;
 }
+
+body {
+	background-color: #323232;
+	font-family: 'Trirong', georgia, times, serif;
+	font-weight: 200;
+	font-size: 18px;
+}
+
+#message {
+    color: white
+}
+
