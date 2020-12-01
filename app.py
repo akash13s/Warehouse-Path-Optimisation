@@ -17,13 +17,13 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
-# @app.route('/') 
-# def homepage():
-#     return app.send_static_file('index.html')
-
 @app.route('/') 
 def homepage():
-    return "<h1>Hello world</h1>"
+    return app.send_static_file('index.html')
+
+# @app.route('/') 
+# def homepage():
+#     return "<h1>Hello world</h1>"
 
 @app.route('/warehouse/<warehouse_id>')
 def get_warehouse(warehouse_id):

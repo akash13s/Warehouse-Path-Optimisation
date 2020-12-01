@@ -2,6 +2,9 @@
     fill: #ffffff;
 }
 
+
+/* shelve cell */
+
 .shelving-cell {
     fill: #676767;
 }
@@ -16,4 +19,49 @@
 
 .item-to-pick-up-cell {
     fill: #2C93E8;
+}
+
+#head {
+    text-align: center;
+    text-shadow: 1px 1px whitesmoke;
+}
+
+#top-bar {
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+    border-style: groove;
+    border-width: 5px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-family: sans-serif;
+}
+
+.btn {
+    background-color: #eb645b;
+    border: slategray;
+    border-radius: 10px;
+    color: rgba(15, 1, 1, 0.973);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: blanchedalmond;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#selectionForm {
+    color: rgba(165, 46, 10, 0.849);
+    border-style: double;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-family: sans-serif;
 }

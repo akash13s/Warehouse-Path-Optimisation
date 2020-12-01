@@ -13,10 +13,22 @@
 <body>
 
     <div class="container">
-        <div class="row">
+        <div class="row" id="top-bar">
             <div class="col-md-12">
-                <h1>Warehouse Path Optimization <small>7th sem project</small> </h1>
-                <hr/>
+                <h1 id="head">Warehouse Path Optimization</h1>
+                <hr>
+                <h3>7th semester project by:</h3>
+                <h6>
+                    <li>
+                        Suraj Kumar (BE/10055/17)
+                    </li>
+                    <li>
+                        Chaitanya Aaditya (BE/10056/17)
+                    </li>
+                    <li>
+                        Aakash Shrivastava (BE/10098/17)
+                    </li>
+                </h6>
             </div>
         </div>
 
@@ -32,18 +44,15 @@
                         <option value="large-warehouse">Large </option>    
                     </select>
                     </div>
-                    <button class="btn btn-block btn-outline-primary" type="submit">Render
+                    <!-- btn btn-block btn-outline-primary -->
+                    <button class="btn" id="renderBtn" type="submit">Render
                 </button>
                     <hr>
                 </form>
             </div>
 
         </div>
-        <hr>
-        <div class="col-md-6" id="instructions">
 
-        </div>
-        <hr>
         <div class="col-md-6" id="renderOutput">
             <!-- <h1>Output</h1> -->
             <br>
@@ -55,7 +64,7 @@
                 <form action="/app.py" method="post">
                     <!-- <form method="post"> -->
                     <div class="col-md-6" id="finalForm">
-                        <button class="btn btn-block btn-outline-primary" type="submit">Submit
+                        <button class="btn" type="submit" id="finalBtn" hidden=true>Submit
                     </button>
                     </div>
                 </form>
