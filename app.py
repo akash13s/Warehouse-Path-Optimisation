@@ -6,7 +6,7 @@ import networkx as nx
 import os
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 
 CORS(app)
 
