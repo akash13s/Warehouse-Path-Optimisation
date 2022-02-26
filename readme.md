@@ -5,7 +5,8 @@ This application calculates the path a bot should take in order to minimise the 
 
 ### Approach to solve the problem 
 
-The DP-bitmasking approach takes exponential time complexity O(N^2 * 2^N), that is, it performs poorly if number of items to be picked is greater than 17.  
+The DP-bitmasking approach takes exponential time complexity O(N^2 * 2^N), that is, it performs poorly if number of items to be picked is greater than 17. 
+Link to DP-bitmasking prototype: https://github.com/akash13s/Walket-System
 
 Using Christofides Algorithm, we always get a path whose cost is within 1.5 times the cost of the most suitable path, and the number of items that can now be picked is approximately 400. The time complexity of this algorithm is O(N^3)
 
